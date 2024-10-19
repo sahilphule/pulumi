@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "puluni"
+version = "1.0.0"
+authors = [
+  { name="Sahil Phule", email="sahilphule.office@gmail.com" },
+]
+description = "Pulimi Modules"
+readme = "README.md"
+requires-python = ">=3.7"
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = [
+    "Pulimi",
+    "AWS",
+    "Azure",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/sahilphule/pulumi"
