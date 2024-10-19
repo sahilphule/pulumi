@@ -1,6 +1,6 @@
 import pulumi
 import pulumi_aws as aws
-from  commons.rds import data
+from . import data
 
 class rds:
     def __init__(self, values, vpc):

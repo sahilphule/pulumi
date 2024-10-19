@@ -1,5 +1,5 @@
 import pulumi_aws as aws
-from commons.eks import data
+from . import data
 import json
 
 class eks:

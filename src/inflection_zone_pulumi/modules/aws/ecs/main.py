@@ -1,6 +1,6 @@
 import pulumi
 import pulumi_aws as aws
-from commons.ecs import data
+from . import data
 import json
 
 class ecs:
