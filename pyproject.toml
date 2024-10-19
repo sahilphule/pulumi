@@ -24,4 +24,4 @@ keywords = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/sahilphule/pulumi"
+"Homepage" = "https://github.com/sahilphule/inflection-zone-pulumi"
