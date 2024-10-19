@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "puluni"
+name = "inflection-zone-pulumi"
 version = "1.0.0"
 authors = [
   { name="Sahil Phule", email="sahilphule.office@gmail.com" },
@@ -18,7 +18,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 keywords = [
-    "Pulimi",
+    "Pulumi",
     "AWS",
     "Azure",
 ]
