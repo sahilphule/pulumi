@@ -8,7 +8,7 @@ version = "1.0.0"
 authors = [
   { name="Sahil Phule", email="sahilphule.office@gmail.com" },
 ]
-description = "Pulimi Modules"
+description = "Pulumi Modules"
 readme = "README.md"
 requires-python = ">=3.7"
 
@@ -24,4 +24,4 @@ keywords = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/sahilphule/inflection-zone-pulumi"
+"Homepage" = "https://github.com/sahilphule/pulumi.git"
