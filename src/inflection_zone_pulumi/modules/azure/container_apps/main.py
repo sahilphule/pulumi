@@ -51,32 +51,44 @@ class container_app:
             container_app_name = values.container_app_properties["container-app-name"],
             managed_environment_id = self.managed_environment.id,
 
-            configuration = app.ConfigurationArgs(
-                ingress = app.IngressArgs(
-                    external = values.container_app_properties["container-app-ingress-external-enabled"],
-                    target_port = values.container_app_properties["container-app-ingress-port"],
-                ),
-                registries = [
-                    app.RegistryCredentialsArgs(
-                        server = acr.acr.login_server,
-                        username = acr.admin_username,
-                        password_secret_ref = "acrpassword")
-                ],
-                secrets = [
-                    app.SecretArgs(
-                        name = "acrpassword",
-                        value = acr.admin_password)
-                ],         
-            ),
-            
-            template = app.TemplateArgs(
-                containers = [
-                    app.ContainerArgs(
-                        name = values.container_app_properties["container-name"],
-                        image = values.container_app_properties["container-image"]
-                    )
-                ]
-            )
+            configuration = {
+                "ingress": {
+                    "external": True,
+                    "target_port": 3000,
+                },
+                "registries": [{
+                    # "identity": "string",
+                    "server": acr.acr.login_server,
+                    "username": acr.admin_username,
+                    "password_secret_ref": "acrpassword",
+                }],
+                "secrets": [{
+                    # "identity": "string",
+                    # "key_vault_url": "string",
+                    "name": "acrpassword",
+                    "value": acr.admin_password,
+                }],
+            },
+            template={
+                "containers": [{
+                    "image": values.container_app_properties["container-app-container-image"],
+                    "name": values.container_app_properties["container-app-container-name"],
+                }],
+                "scale": {
+                    "min_replicas": values.container_app_properties["container-app-min-replicas"],
+                    "max_replicas": values.container_app_properties["container-app-max-replicas"],
+                    "rules": [{
+                        "custom": {
+                            "metadata": {
+                                "concurrentRequests": "50",
+                            },
+                            "type": "http",
+                        },
+                        "name": "httpscalingrule",
+                    }],
+                },
+            },
+            workload_profile_type="GeneralPurpose"
         )
 
         pulumi.export("container-app-url", self.container_app.configuration.ingress.fqdn)
